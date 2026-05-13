@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -7,16 +8,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-neon-green/10 border border-neon-green/20 flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M8 1L14 4.5V11.5L8 15L2 11.5V4.5L8 1Z" stroke="#00E85A" strokeWidth="1.5" fill="none" />
-                  <circle cx="8" cy="8" r="2" fill="#00E85A" opacity="0.6" />
-                </svg>
-              </div>
-              <span className="font-display font-bold text-xl text-white tracking-tight">
-                Lead<span className="text-neon-green">Ghost</span>
-              </span>
+            <Link href="/" className="flex items-center mb-4">
+              <Image
+                src="/logo.png"
+                alt="LeadGhost"
+                width={140}
+                height={35}
+                className="h-7 w-auto"
+              />
             </Link>
             <p className="text-ghost-text text-sm leading-relaxed max-w-sm">
               Cold outbound infrastructure, campaign strategy, and GTM systems that actually put meetings on your calendar.

@@ -17,10 +17,10 @@ function HeroSection() {
 
           {/* Headline */}
           <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.95] tracking-tight animate-fade-up">
-            Your pipeline
+            Cold outbound
             <br />
-            is{' '}
-            <span className="text-neon-green glow-text">haunted.</span>
+            that{' '}
+            <span className="text-neon-green glow-text">actually works.</span>
           </h1>
 
           {/* Sub */}
@@ -284,10 +284,10 @@ function CTASection() {
 
       <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center relative z-10">
         <h2 className="font-display font-bold text-4xl lg:text-6xl text-white leading-tight">
-          Ready to haunt<br />your competitors' pipeline?
+          Your outbound should be<br />a system, not a gamble.
         </h2>
         <p className="text-ghost-light text-lg mt-6 max-w-xl mx-auto">
-          Let's audit your current outbound setup and build a system that actually converts. No pitch decks. Just strategy.
+          Let&apos;s audit your current setup and build something that actually converts. No pitch decks. Just strategy.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
           <Link
