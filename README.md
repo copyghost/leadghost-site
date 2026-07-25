@@ -47,9 +47,13 @@ validation, a `_gotcha` honeypot, and inline success/error states (no redirect).
 
 ## Analytics (Vercel)
 
-`@vercel/analytics` and `@vercel/speed-insights` are wired into the root layout
-(cookieless — no consent banner). To turn them on, **enable Web Analytics and
-Speed Insights** in the Vercel project dashboard, then redeploy.
+`@vercel/analytics` is wired into the root layout (cookieless — no consent
+banner). Enable **Web Analytics** in the Vercel dashboard, then redeploy.
+
+Speed Insights was removed because it requires a paid Vercel plan. To re-enable
+after upgrading: `npm i @vercel/speed-insights`, then render `<SpeedInsights />`
+(from `@vercel/speed-insights/next`) in `app/layout.js`, and enable Speed
+Insights in the dashboard.
 
 Two conversions are tracked (see `lib/analytics.js` + `components/ConversionTracking.js`):
 
