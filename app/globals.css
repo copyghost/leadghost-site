@@ -62,3 +62,45 @@ html {
     gap: var(--half) var(--space-3);
   }
 }
+
+/* ── Accessibility: color contrast (WCAG AA) ─────────────────────────────────
+   The base accent (#0088b0) is tuned for fills/large chrome (~3.6:1). As small
+   text or as a button ground it misses AA (4.5:1), so bump those specific uses
+   to the darker accent-700+ steps. Loaded after broadsheet.css, so these win. */
+.btn-primary {
+  background: var(--color-accent-700); /* #f3f2f2 on #006786 = 5.7:1 */
+}
+.btn-primary:hover {
+  background: var(--color-accent-800);
+}
+.btn-primary:active {
+  background: var(--color-accent-900);
+}
+.btn-ghost {
+  color: var(--color-accent-700);
+}
+.card-kicker {
+  color: var(--color-accent-700);
+}
+.nav a:hover,
+.nav a[aria-current='page'] {
+  color: var(--color-accent-700);
+}
+/* Card titles become <h3>s in the a11y pass; keep them flush like the divs. */
+.card-title {
+  margin: 0;
+}
+
+/* Screen-reader-only text — a real heading in the accessibility tree that isn't
+   painted (used to give the Proof section a landmark heading). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
