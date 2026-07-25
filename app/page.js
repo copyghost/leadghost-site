@@ -12,7 +12,7 @@ const CTA = 'Book a call';
 // app/broadsheet.css). Kept as HTML so it renders byte-for-byte as designed.
 const INNER = `
   <nav class="nav" style="padding-inline: max(var(--edge), calc((100% - 1200px)/2 + var(--edge)));">
-    <span class="nav-brand">LeadGhost</span>
+    <a class="nav-brand" href="/" aria-label="LeadGhost home" style="display:inline-flex; align-items:center;"><img src="/logo.png" alt="LeadGhost" width="125" height="32" style="height:32px; width:auto; display:block;"></a>
     <a href="#approach" style="white-space:nowrap">Approach</a>
     <a href="#proof" style="white-space:nowrap">Proof</a>
     <a href="#engagements" style="white-space:nowrap">Engagements</a>

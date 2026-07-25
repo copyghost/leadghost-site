@@ -16,7 +16,7 @@ const organization = {
   name: 'LeadGhost',
   url: BASE_URL,
   email: 'micheal@leadghost.co',
-  logo: `${BASE_URL}/icon-512.png`,
+  logo: `${BASE_URL}/logo.png`,
   description:
     'Cold outbound infrastructure, campaign strategy, and GTM systems that put you in conversation with the people who decide.',
 };
