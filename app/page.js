@@ -1,6 +1,4 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Edit these two to point the CTA wherever you want (e.g. a Calendly link).
@@ -8,22 +6,25 @@ import { useEffect, useRef } from 'react';
 const BOOKING_URL = 'https://app.onecal.io/b/leadghost/30-minute-meeting';
 const CTA = 'Book a call';
 
-// The landing markup (Broadsheet design system — styles live in
+// Masthead dateline — computed once at build time (this is a static export),
+// so it ships in the initial HTML with no client JS and no layout shift.
+const dateline = new Date().toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+// The landing markup below the nav (Broadsheet design system — styles live in
 // app/broadsheet.css). Kept as HTML so it renders byte-for-byte as designed.
-const INNER = `
-  <nav class="nav" style="padding-inline: max(var(--edge), calc((100% - 1200px)/2 + var(--edge)));">
-    <a class="nav-brand" href="/" aria-label="LeadGhost home" style="display:inline-flex; align-items:center;"><img src="/logo.png" alt="LeadGhost" width="125" height="32" style="height:32px; width:auto; display:block;"></a>
-    <a href="#approach" style="white-space:nowrap">Approach</a>
-    <a href="#proof" style="white-space:nowrap">Proof</a>
-    <a href="#engagements" style="white-space:nowrap">Engagements</a>
-    <a class="btn btn-primary" href="${BOOKING_URL}">${CTA}</a>
-  </nav><div style="max-width:1200px; margin:0 auto; padding:0 var(--edge);">
+// The nav is real JSX (see the component) so the logo can use next/image.
+const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge);">
 
     <!-- MASTHEAD DATELINE -->
     <div style="padding-top: calc(1.25*var(--leading));">
       <hr style="height:5px; border:0; margin:0; border-top:2px solid var(--color-text); border-bottom:1px solid var(--color-text);">
       <p style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--half) var(--leading); margin:0; padding:var(--half) 0; font-size:13px; line-height:var(--half); letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 70%, transparent);">
-        <span data-dateline></span>
+        <span>${dateline}</span>
         <span>Cold outbound &middot; Deal sourcing &middot; GTM systems</span>
         <span>Now accepting clients</span>
       </p>
@@ -234,23 +235,8 @@ const INNER = `
   </div>`;
 
 export default function Home() {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const el = ref.current?.querySelector('[data-dateline]');
-    if (el) {
-      el.textContent = new Date().toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
-    }
-  }, []);
-
   return (
     <div
-      ref={ref}
       className="lg-page"
       style={{
         '--leading': '28px',
@@ -258,7 +244,32 @@ export default function Home() {
         '--edge': 'clamp(20px,5vw,72px)',
         '--measure': '58ch',
       }}
-      dangerouslySetInnerHTML={{ __html: INNER }}
-    />
+    >
+      <nav
+        className="nav"
+        style={{ paddingInline: 'max(var(--edge), calc((100% - 1200px)/2 + var(--edge)))' }}
+      >
+        <a
+          className="nav-brand"
+          href="/"
+          aria-label="LeadGhost home"
+          style={{ display: 'inline-flex', alignItems: 'center' }}
+        >
+          <Image
+            src="/logo.png"
+            alt="LeadGhost"
+            width={600}
+            height={154}
+            priority
+            style={{ height: '32px', width: 'auto' }}
+          />
+        </a>
+        <a href="#approach" style={{ whiteSpace: 'nowrap' }}>Approach</a>
+        <a href="#proof" style={{ whiteSpace: 'nowrap' }}>Proof</a>
+        <a href="#engagements" style={{ whiteSpace: 'nowrap' }}>Engagements</a>
+        <a className="btn btn-primary" href={BOOKING_URL}>{CTA}</a>
+      </nav>
+      <div dangerouslySetInnerHTML={{ __html: BODY }} />
+    </div>
   );
 }

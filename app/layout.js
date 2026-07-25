@@ -5,10 +5,12 @@ import './globals.css';
 
 // Self-hosted at build time — no external font request at runtime.
 const sourceSerif = Source_Serif_4({
-  subsets: ['latin'],
+  subsets: ['latin'], // subset the font
   weight: ['400', '600'],
   style: ['normal', 'italic'],
-  display: 'swap',
+  display: 'swap', // swap: show fallback immediately, no invisible-text delay
+  preload: true, // preload the primary font
+  adjustFontFallback: true, // metric-matched fallback to minimize swap-induced CLS
   variable: '--font-source-serif',
 });
 
