@@ -49,6 +49,14 @@ html {
   display: none;
 }
 
+/* The design justifies body paragraphs with auto-hyphenation, which opens up
+   uneven "rivers" of word spacing (worst in narrow mobile columns). Read them
+   as normal left-aligned prose instead. */
+.lg-page [style*='text-align:justify'] {
+  text-align: left !important;
+  hyphens: none !important;
+}
+
 /* ── Responsive breakpoints ──────────────────────────────────────────────────
    The Broadsheet export is authored for a 1200px sheet with fixed multi-column
    grids and no breakpoints. These rules collapse those grids on smaller screens
