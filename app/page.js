@@ -32,11 +32,8 @@ const INNER = `
 
     <!-- HERO -->
     <section style="padding: calc(4*var(--leading)) 0 calc(2.5*var(--leading));">
-      <h1 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(42px,6.4vw,84px); line-height:clamp(45px,6.8vw,90px); letter-spacing:-0.02em; margin:0 0 0 -0.035em; text-box:trim-both cap alphabetic;">
-        <span class="line cmyk-head" style="display:block"><span class="paper">Your next ten</span><span class="plate plate-c" aria-hidden="true">Your next ten</span><span class="plate plate-m" aria-hidden="true">Your next ten</span><span class="plate plate-y" aria-hidden="true">Your next ten</span></span>
-        <span class="line cmyk-head" style="display:block"><span class="paper">decision-maker</span><span class="plate plate-c" aria-hidden="true">decision-maker</span><span class="plate plate-m" aria-hidden="true">decision-maker</span><span class="plate plate-y" aria-hidden="true">decision-maker</span></span>
-        <span class="line cmyk-head" style="display:block"><span class="paper">conversations are</span><span class="plate plate-c" aria-hidden="true">conversations are</span><span class="plate plate-m" aria-hidden="true">conversations are</span><span class="plate plate-y" aria-hidden="true">conversations are</span></span>
-        <span class="line cmyk-head" style="display:block"><span class="paper">a two-week build away.</span><span class="plate plate-c" aria-hidden="true">a two-week build away.</span><span class="plate plate-m" aria-hidden="true">a two-week build away.</span><span class="plate plate-y" aria-hidden="true">a two-week build away.</span></span>
+      <h1 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(38px,5.75vw,72px); line-height:1.05; letter-spacing:-0.025em; margin:0 0 0 -0.04em; text-box:trim-both cap alphabetic;">
+        <span class="cmyk-head" style="display:block; position:relative;"><span class="paper">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span><span class="plate plate-c" aria-hidden="true">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span><span class="plate plate-m" aria-hidden="true">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span><span class="plate plate-y" aria-hidden="true">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span></span>
       </h1>
       <p style="font-size:18px; line-height:var(--leading); max-width:var(--measure); margin: calc(1.5*var(--leading) - 1cap) 0 0; text-box:trim-both cap alphabetic;">LeadGhost builds, tests, and automates cold outbound that reaches the person who can actually say yes. Owners, founders, partners. Whether you’re selling a service or sourcing your next acquisition, the motion is the same: get to the decision maker directly, before anyone else does.</p>
       <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; margin-top:var(--leading);">
@@ -205,7 +202,7 @@ const INNER = `
 
     <!-- CLOSE -->
     <section style="padding: calc(2.5*var(--leading)) 0 calc(2*var(--leading));">
-      <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(28px,3.4vw,40px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; max-width:28ch; text-box:trim-both cap alphabetic;">Your next ten decision-maker conversations are a two-week build away.</h3>
+      <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(28px,3.4vw,40px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; max-width:28ch; text-box:trim-both cap alphabetic;">Your next 10 decision-maker conversations are a two-week build away.</h3>
       <p style="font-size:16px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:calc(var(--leading) - 1cap) 0 0; max-width:var(--measure); text-box:trim-both cap alphabetic;">Bring us your offer, or your acquisition thesis, and your best-fit accounts. We’ll build the system that turns them into calendar invites.</p>
       <div style="margin-top:var(--leading);">
         <a class="btn btn-primary" href="${BOOKING_URL}">${CTA}</a>
