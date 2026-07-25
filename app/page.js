@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import ContactForm from '@/components/ContactForm';
 // The CTA target lives in lib/config.js (shared with the conversion tracker).
-import { BOOKING_URL, CTA } from '@/lib/config';
+import { BOOKING_URL, BOOKING_ANCHOR, CTA } from '@/lib/config';
 
 // Masthead dateline — computed once at build time (this is a static export),
 // so it ships in the initial HTML with no client JS and no layout shift.
@@ -34,7 +35,7 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
       </h1>
       <p style="font-size:18px; line-height:var(--leading); max-width:var(--measure); margin: calc(1.5*var(--leading) - 1cap) 0 0; text-box:trim-both cap alphabetic;">LeadGhost builds, tests, and automates cold outbound that reaches the person who can actually say yes. Owners, founders, partners. Whether you’re selling a service or sourcing your next acquisition, the motion is the same: get to the decision maker directly, before anyone else does.</p>
       <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; margin-top:var(--leading);">
-        <a class="btn btn-primary" href="${BOOKING_URL}">${CTA}</a>
+        <a class="btn btn-primary" href="${BOOKING_ANCHOR}">${CTA}</a>
         <a class="btn btn-ghost" href="#proof">See the results</a>
       </div>
     </section>
@@ -167,7 +168,7 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
             <span>Warmup &amp; DNS (SPF, DKIM, DMARC)</span>
             <span>Ongoing deliverability monitoring</span>
           </div>
-          <a class="btn btn-secondary btn-block" href="${BOOKING_URL}" style="margin-top:auto;">${CTA}</a>
+          <a class="btn btn-secondary btn-block" href="${BOOKING_ANCHOR}" style="margin-top:auto;">${CTA}</a>
         </div>
         <div class="card elev-md" style="outline:2px solid var(--color-accent); outline-offset:-2px;">
           <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
@@ -181,7 +182,7 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
             <span>Copywriting &amp; A/B testing</span>
             <span>Reply management &amp; booking</span>
           </div>
-          <a class="btn btn-primary btn-block" href="${BOOKING_URL}" style="margin-top:auto;">${CTA}</a>
+          <a class="btn btn-primary btn-block" href="${BOOKING_ANCHOR}" style="margin-top:auto;">${CTA}</a>
         </div>
         <div class="card">
           <div class="card-kicker">GTM partner</div>
@@ -192,7 +193,7 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
             <span>Dedicated strategist</span>
             <span>Pipeline reporting &amp; forecasting</span>
           </div>
-          <a class="btn btn-secondary btn-block" href="${BOOKING_URL}" style="margin-top:auto;">Talk to us</a>
+          <a class="btn btn-secondary btn-block" href="${BOOKING_ANCHOR}" style="margin-top:auto;">Talk to us</a>
         </div>
       </div>
     </section>
@@ -202,10 +203,25 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
       <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(28px,3.4vw,40px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; max-width:28ch; text-box:trim-both cap alphabetic;">Your next 10 decision-maker conversations are a two-week build away.</h3>
       <p style="font-size:16px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:calc(var(--leading) - 1cap) 0 0; max-width:var(--measure); text-box:trim-both cap alphabetic;">Bring us your offer, or your acquisition thesis, and your best-fit accounts. We’ll build the system that turns them into calendar invites.</p>
       <div style="margin-top:var(--leading);">
-        <a class="btn btn-primary" href="${BOOKING_URL}">${CTA}</a>
+        <a class="btn btn-primary" href="${BOOKING_ANCHOR}">${CTA}</a>
       </div>
     </section>
 
+    <!-- BOOK A CALL — OneCal inline embed. loading="lazy" defers it until the
+         section scrolls into view (or a "Book a call" CTA jumps here), so it
+         never competes with the hero for LCP. -->
+    <section id="book" style="padding: calc(2*var(--leading)) 0 calc(2.5*var(--leading));">
+      <span style="display:block; font-size:13px; line-height:var(--half); letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:0 0 calc(var(--leading) - var(--half));"><span style="color:var(--color-accent-2);">No. 5</span> &mdash; Book a call</span>
+      <h2 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(26px,3vw,34px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0 0 calc(var(--leading) - 1cap); max-width:24ch; text-box:trim-both cap alphabetic;">Grab a time that works.</h2>
+      <p style="font-size:16px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0 0 var(--leading); max-width:var(--measure);">Pick a slot and we&rsquo;ll walk through your offer or acquisition thesis and map the first two weeks.</p>
+      <div style="border:1px solid var(--color-text); background:var(--color-surface);">
+        <iframe src="${BOOKING_URL}" title="Book a 30-minute call with LeadGhost" loading="lazy" style="display:block; width:100%; height:680px; border:0;"></iframe>
+      </div>
+    </section>
+
+  </div>`;
+
+const FOOTER = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge);">
     <hr style="height:5px; border:0; margin:0; border-top:1px solid var(--color-text); border-bottom:2px solid var(--color-text);">
     <footer style="padding: calc(2*var(--leading)) 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--leading); font-size:13px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 70%, transparent);">
       <div style="max-width:40ch;">
@@ -218,16 +234,16 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
           <a href="#approach">Approach</a>
           <a href="#proof">Proof</a>
           <a href="#engagements">Engagements</a>
+          <a href="#contact">Contact</a>
         </div>
         <div style="display:flex; flex-direction:column; gap:6px;">
           <span style="text-transform:uppercase; letter-spacing:0.08em; color:var(--color-text);">Connect</span>
           <a href="mailto:micheal@leadghost.co">micheal@leadghost.co</a>
-          <a href="${BOOKING_URL}">${CTA}</a>
+          <a href="${BOOKING_ANCHOR}">${CTA}</a>
         </div>
       </div>
       <div style="flex-basis:100%; padding-top:var(--half);">© 2026 LeadGhost. All rights reserved.</div>
     </footer>
-
   </div>`;
 
 export default function Home() {
@@ -263,9 +279,11 @@ export default function Home() {
         <a href="#approach" style={{ whiteSpace: 'nowrap' }}>Approach</a>
         <a href="#proof" style={{ whiteSpace: 'nowrap' }}>Proof</a>
         <a href="#engagements" style={{ whiteSpace: 'nowrap' }}>Engagements</a>
-        <a className="btn btn-primary" href={BOOKING_URL}>{CTA}</a>
+        <a className="btn btn-primary" href={BOOKING_ANCHOR}>{CTA}</a>
       </nav>
       <div dangerouslySetInnerHTML={{ __html: BODY }} />
+      <ContactForm />
+      <div dangerouslySetInnerHTML={{ __html: FOOTER }} />
     </div>
   );
 }
