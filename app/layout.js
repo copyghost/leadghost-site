@@ -1,13 +1,19 @@
 import { Source_Serif_4 } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import StructuredData from '@/components/StructuredData';
+import ConversionTracking from '@/components/ConversionTracking';
 import './broadsheet.css';
 import './globals.css';
 
 // Self-hosted at build time — no external font request at runtime.
 const sourceSerif = Source_Serif_4({
-  subsets: ['latin'],
+  subsets: ['latin'], // subset the font
   weight: ['400', '600'],
   style: ['normal', 'italic'],
-  display: 'swap',
+  display: 'swap', // swap: show fallback immediately, no invisible-text delay
+  preload: true, // preload the primary font
+  adjustFontFallback: true, // metric-matched fallback to minimize swap-induced CLS
   variable: '--font-source-serif',
 });
 
@@ -64,7 +70,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={sourceSerif.variable}>
-      <body>{children}</body>
+      <body>
+        <StructuredData />
+        {children}
+        <ConversionTracking />
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

@@ -1,0 +1,32 @@
+# LeadGhost
+
+> Cold outbound infrastructure, campaign strategy, and go-to-market systems that put you in direct conversation with decision makers — owners, founders, and partners — not leads in a spreadsheet.
+
+LeadGhost builds, tests, and automates cold email outbound that reaches the person who can actually say yes. It serves operators selling a service and acquirers (PE firms and search funds) sourcing proprietary deal flow directly from owners. Everything is done-with/done-for-you: deliverability, targeting, copy, testing, and reply handling.
+
+## What LeadGhost does
+- Deliverability infrastructure: domains, inboxes, warmup, DNS (SPF, DKIM, DMARC), and ongoing deliverability monitoring so mail lands in the inbox, not spam or promotions.
+- Managed outbound campaigns: decision-maker list building and targeting, copywriting, A/B testing, reply management, and booking to your calendar.
+- GTM systems: multi-campaign, multi-market outbound with strategy, pipeline reporting, and forecasting.
+
+## Service tiers
+- Deliverability build (Infrastructure): domain & inbox setup, warmup & DNS, ongoing deliverability monitoring. For teams who write their own copy but keep landing in spam.
+- Managed outbound (Campaigns) — most chosen: everything in Infrastructure, plus fully managed campaigns — list building, copywriting, A/B testing, and reply handling straight to your calendar.
+- Full outbound engine (GTM partner): multi-campaign, multi-market outbound with a dedicated strategist plus pipeline reporting and forecasting.
+
+## Who it's for
+- B2B founders selling into other founders and executives
+- Agencies and studios that want principals in front of buyers
+- PE firms and search funds sourcing proprietary, off-market deal flow direct from owners
+- Bootstrapped operators who live by their pipeline
+
+## Representative results
+- A video production company went from 7–15% to 55–60% email open rates.
+- A search fund booked 43 owner meetings in three months, ~$74M in pipeline.
+- A social analytics platform ran 6 parallel campaigns and got 3–4 interested replies per day.
+- An Austin acquirer opened 27 conversations with home-services owners, 100% off-market.
+
+## Contact
+- Website: https://leadghost.co
+- Email: micheal@leadghost.co
+- Book a call: https://app.onecal.io/b/leadghost/30-minute-meeting
