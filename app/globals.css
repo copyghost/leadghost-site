@@ -56,6 +56,22 @@ html {
   .lg-page [style*='repeat(4,1fr)'] {
     grid-template-columns: 1fr !important;
   }
+
+  /* Case-study metric pairs: the desktop layout is a bottom-aligned flex row,
+     which crowds and misaligns on phones. Lay each pair out as a tidy 2-up
+     grid, top-aligned, and tighten the oversized label -> number gap so each
+     stat reads as one unit. */
+  .lg-page [style*='align-items:flex-end'] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-4);
+    row-gap: var(--leading);
+    align-items: start !important;
+  }
+  .lg-page [style*='margin-bottom:calc(1.5*var(--leading))'],
+  .lg-page [style*='margin-bottom:20px'] {
+    margin-bottom: var(--space-2) !important;
+  }
 }
 
 /* ── Nav: full links on desktop, hamburger + dropdown on small screens ─────── */
