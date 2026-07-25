@@ -226,7 +226,7 @@ const FOOTER = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edg
     <hr style="height:5px; border:0; margin:0; border-top:1px solid var(--color-text); border-bottom:2px solid var(--color-text);">
     <footer style="padding: calc(2*var(--leading)) 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--leading); font-size:13px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 70%, transparent);">
       <div style="max-width:40ch;">
-        <img src="/logo.png" alt="LeadGhost" width="600" height="154" style="height:26px; width:auto; display:block; margin-bottom:12px;">
+        <img src="/logo.png" alt="LeadGhost" width="521" height="136" style="height:40px; width:auto; display:block; margin-bottom:12px;">
         Cold outbound infrastructure, campaign strategy, and GTM systems that put you in conversation with the people who decide.
       </div>
       <div style="display:flex; gap:calc(2*var(--leading)); flex-wrap:wrap;">
@@ -272,10 +272,10 @@ export default function Home() {
           <Image
             src="/logo.png"
             alt="LeadGhost"
-            width={600}
-            height={154}
+            width={521}
+            height={136}
             priority
-            style={{ height: '44px', width: 'auto' }}
+            style={{ height: '50px', width: 'auto' }}
           />
         </a>
         <a href="#approach" style={{ whiteSpace: 'nowrap' }}>Approach</a>
