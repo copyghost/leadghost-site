@@ -74,6 +74,13 @@ html {
   }
 }
 
+/* Case-study metric pairs are bottom-aligned by default, which drops the second
+   label/number when the two figures are different sizes (e.g. 27 next to 100%).
+   Top-align them so both share a top line and read as a balanced pair. */
+.lg-page [style*='align-items:flex-end'] {
+  align-items: flex-start !important;
+}
+
 /* ── Nav: full links on desktop, hamburger + dropdown on small screens ─────── */
 .site-nav {
   position: relative;
