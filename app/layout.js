@@ -1,4 +1,5 @@
 import { Source_Serif_4 } from 'next/font/google';
+import StructuredData from '@/components/StructuredData';
 import './broadsheet.css';
 import './globals.css';
 
@@ -64,7 +65,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={sourceSerif.variable}>
-      <body>{children}</body>
+      <body>
+        <StructuredData />
+        {children}
+      </body>
     </html>
   );
 }
