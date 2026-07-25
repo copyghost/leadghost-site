@@ -86,6 +86,13 @@ html {
 .nav a[aria-current='page'] {
   color: var(--color-accent-700);
 }
+/* The design system's `.nav a { color: inherit }` outranks `.btn-primary`, so
+   the nav "Book a call" label was inheriting dark body text (dark-on-teal,
+   ~2.9:1). Restore the button's light label inside the nav, base and hover. */
+.nav a.btn-primary,
+.nav a.btn-primary:hover {
+  color: var(--color-bg);
+}
 /* Card titles become <h3>s in the a11y pass; keep them flush like the divs. */
 .card-title {
   margin: 0;
