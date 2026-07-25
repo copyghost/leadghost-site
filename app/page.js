@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import SiteNav from '@/components/SiteNav';
 import ContactForm from '@/components/ContactForm';
 // The CTA target lives in lib/config.js (shared with the conversion tracker).
 import { BOOKING_URL, BOOKING_ANCHOR, CTA } from '@/lib/config';
@@ -259,30 +259,7 @@ export default function Home() {
       }}
     >
       <header>
-      <nav
-        className="nav"
-        style={{ paddingInline: 'max(var(--edge), calc((100% - 1200px)/2 + var(--edge)))' }}
-      >
-        <a
-          className="nav-brand"
-          href="/"
-          aria-label="LeadGhost home"
-          style={{ display: 'inline-flex', alignItems: 'center' }}
-        >
-          <Image
-            src="/logo.png"
-            alt="LeadGhost"
-            width={521}
-            height={136}
-            priority
-            style={{ height: '50px', width: 'auto' }}
-          />
-        </a>
-        <a href="#approach" style={{ whiteSpace: 'nowrap' }}>Approach</a>
-        <a href="#proof" style={{ whiteSpace: 'nowrap' }}>Proof</a>
-        <a href="#engagements" style={{ whiteSpace: 'nowrap' }}>Engagements</a>
-        <a className="btn btn-primary" href={BOOKING_ANCHOR}>{CTA}</a>
-      </nav>
+        <SiteNav />
       </header>
       <main>
         <div dangerouslySetInnerHTML={{ __html: BODY }} />
