@@ -45,7 +45,7 @@ export const metadata = {
         url: '/og.png',
         width: 1200,
         height: 630,
-        alt: 'LeadGhost — Conversations with decision makers. Not leads in a spreadsheet.',
+        alt: 'LeadGhost — Your next 10 decision-maker conversations are a two-week build away.',
       },
     ],
   },
