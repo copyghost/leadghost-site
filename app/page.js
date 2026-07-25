@@ -97,8 +97,13 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
       </div>
 
       <!-- Case 2 -->
-      <div style="display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
-        <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end; order:1;">
+      <div style="display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
+        <div>
+          <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-2); margin-bottom:calc(var(--leading) - var(--half));">Private equity</div>
+          <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(24px,2.6vw,30px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; text-box:trim-both cap alphabetic;">43 owner meetings in three months. Nearly $74M in pipeline.</h3>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; max-width:52ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; text-box:trim-both cap alphabetic;">A search fund ran three campaigns with us (and counting). Financial email trips spam filters more than most, so we reworked the messaging until it landed cleanly. Now their team spends its time in conversations with owners who are actually ready to sell.</p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end;">
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:20px;">Meetings in 3 months</div><span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(56px,7vw,92px);"><span class="paper">43</span><span class="plate plate-c" aria-hidden="true">43</span><span class="plate plate-m" aria-hidden="true">43</span><span class="plate plate-y" aria-hidden="true">43</span></span>
           </div>
@@ -106,11 +111,6 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Pipeline value</div>
             <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(44px,5.5vw,72px);"><span class="paper">~$74M</span><span class="plate plate-c" aria-hidden="true">~$74M</span><span class="plate plate-m" aria-hidden="true">~$74M</span><span class="plate plate-y" aria-hidden="true">~$74M</span></span>
           </div>
-        </div>
-        <div style="order:2;">
-          <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-2); margin-bottom:calc(var(--leading) - var(--half));">Private equity</div>
-          <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(24px,2.6vw,30px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; text-box:trim-both cap alphabetic;">43 owner meetings in three months. Nearly $74M in pipeline.</h3>
-          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; max-width:52ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; text-box:trim-both cap alphabetic;">A search fund ran three campaigns with us (and counting). Financial email trips spam filters more than most, so we reworked the messaging until it landed cleanly. Now their team spends its time in conversations with owners who are actually ready to sell.</p>
         </div>
       </div><div style="display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
         <div>
@@ -128,8 +128,13 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
             <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(48px,6vw,76px);"><span class="paper">3–4</span><span class="plate plate-c" aria-hidden="true">3–4</span><span class="plate plate-m" aria-hidden="true">3–4</span><span class="plate plate-y" aria-hidden="true">3–4</span></span>
           </div>
         </div>
-      </div><div style="display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
-        <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end; order:1;">
+      </div><div style="display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
+        <div>
+          <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-2); margin-bottom:calc(var(--leading) - var(--half));">Home services &middot; Austin</div>
+          <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(24px,2.6vw,30px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; text-box:trim-both cap alphabetic;">27 conversations with founders and owners. None of them on a banker&rsquo;s list.</h3>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; max-width:52ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; text-box:trim-both cap alphabetic;">An Austin firm wanted direct access to home services operators, the kind who never answer a broker and aren’t running a process. We built the target list ourselves, wrote to owners like operators rather than buyers, and opened 27 real conversations. Proprietary deal flow, one inbox at a time.</p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end;">
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Owner conversations</div>
             <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(56px,7vw,92px);"><span class="paper">27</span><span class="plate plate-c" aria-hidden="true">27</span><span class="plate plate-m" aria-hidden="true">27</span><span class="plate plate-y" aria-hidden="true">27</span></span>
@@ -138,11 +143,6 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Off-market</div>
             <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(44px,5.5vw,72px);"><span class="paper">100%</span><span class="plate plate-c" aria-hidden="true">100%</span><span class="plate plate-m" aria-hidden="true">100%</span><span class="plate plate-y" aria-hidden="true">100%</span></span>
           </div>
-        </div>
-        <div style="order:2;">
-          <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-2); margin-bottom:calc(var(--leading) - var(--half));">Home services &middot; Austin</div>
-          <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(24px,2.6vw,30px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; text-box:trim-both cap alphabetic;">27 conversations with founders and owners. None of them on a banker&rsquo;s list.</h3>
-          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; max-width:52ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; text-box:trim-both cap alphabetic;">An Austin firm wanted direct access to home services operators, the kind who never answer a broker and aren’t running a process. We built the target list ourselves, wrote to owners like operators rather than buyers, and opened 27 real conversations. Proprietary deal flow, one inbox at a time.</p>
         </div>
       </div>
     </section>
