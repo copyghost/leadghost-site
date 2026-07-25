@@ -1,339 +1,261 @@
 'use client';
-import { useState } from 'react';
-import Link from 'next/link';
 
-function HeroSection() {
-  return (
-    <section className="relative min-h-screen flex items-center bg-grid overflow-hidden">
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-neon-green/[0.04] rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-neon-green/[0.03] rounded-full blur-[100px]" />
+import { useEffect, useRef } from 'react';
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-28 relative z-10">
-        <div className="max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-ghost-border bg-ghost-card/50 mb-8 animate-fade-in">
-            <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-            <span className="text-xs font-mono text-ghost-text">Accepting new clients</span>
-          </div>
+// ─────────────────────────────────────────────────────────────────────────────
+// Edit these two to point the CTA wherever you want (e.g. a Calendly link).
+// ─────────────────────────────────────────────────────────────────────────────
+const BOOKING_URL = 'https://app.onecal.io/b/leadghost/30-minute-meeting';
+const CTA = 'Book a call';
 
-          <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.95] tracking-tight animate-fade-up">
-            Outbound Strategy to Engage{' '}
-            <span className="text-neon-green glow-text">Every Prospect</span>
-          </h1>
+// The landing markup (Broadsheet design system — styles live in
+// app/broadsheet.css). Kept as HTML so it renders byte-for-byte as designed.
+const INNER = `
+  <nav class="nav" style="padding-inline: max(var(--edge), calc((100% - 1200px)/2 + var(--edge)));">
+    <span class="nav-brand">LeadGhost</span>
+    <a href="#approach" style="white-space:nowrap">Approach</a>
+    <a href="#proof" style="white-space:nowrap">Proof</a>
+    <a href="#engagements" style="white-space:nowrap">Engagements</a>
+    <a class="btn btn-primary" href="${BOOKING_URL}">${CTA}</a>
+  </nav><div style="max-width:1200px; margin:0 auto; padding:0 var(--edge);">
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-10 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-ghost-black bg-neon-green rounded-lg hover:bg-neon-glow transition-all duration-200 hover:shadow-[0_0_32px_rgba(0,232,90,0.3)]"
-            >
-              Schedule a Free Consultation
-              <svg className="ml-2 w-4 h-4" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </div>
+    <!-- MASTHEAD DATELINE -->
+    <div style="padding-top: calc(1.25*var(--leading));">
+      <hr style="height:5px; border:0; margin:0; border-top:2px solid var(--color-text); border-bottom:1px solid var(--color-text);">
+      <p style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--half) var(--leading); margin:0; padding:var(--half) 0; font-size:13px; line-height:var(--half); letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 70%, transparent);">
+        <span data-dateline></span>
+        <span>Cold outbound &middot; Deal sourcing &middot; GTM systems</span>
+        <span>Now accepting clients</span>
+      </p>
+      <hr style="height:0; border:0; border-top:1px solid var(--color-text); margin:0;">
+    </div>
 
-      <div className="absolute bottom-0 left-0 right-0 gradient-line opacity-40" />
-    </section>
-  );
-}
-
-function WhoWeAre() {
-  return (
-    <section className="relative py-24 lg:py-32 bg-ghost-dark border-y border-ghost-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <span className="text-xs font-mono font-medium text-neon-green uppercase tracking-widest">Who We Are</span>
-          <h2 className="font-display font-bold text-3xl lg:text-5xl text-white mt-4 leading-tight">
-            leadghost builds, tests, and automates your company&apos;s cold email outbound process.
-          </h2>
-          <div className="mt-10">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-ghost-black bg-neon-green rounded-lg hover:bg-neon-glow transition-all duration-200 hover:shadow-[0_0_32px_rgba(0,232,90,0.3)]"
-            >
-              Schedule a Free Consultation
-            </Link>
-          </div>
-        </div>
+    <!-- HERO -->
+    <section style="padding: calc(4*var(--leading)) 0 calc(2.5*var(--leading));">
+      <h1 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(42px,6.4vw,84px); line-height:clamp(45px,6.8vw,90px); letter-spacing:-0.02em; margin:0 0 0 -0.035em; text-box:trim-both cap alphabetic;">
+        <span class="line cmyk-head" style="display:block"><span class="paper">Conversations with</span><span class="plate plate-c" aria-hidden="true">Conversations with</span><span class="plate plate-m" aria-hidden="true">Conversations with</span><span class="plate plate-y" aria-hidden="true">Conversations with</span></span>
+        <span class="line cmyk-head" style="display:block"><span class="paper">decision makers.</span><span class="plate plate-c" aria-hidden="true">decision makers.</span><span class="plate plate-m" aria-hidden="true">decision makers.</span><span class="plate plate-y" aria-hidden="true">decision makers.</span></span>
+        <span class="line cmyk-head" style="display:block"><span class="paper">Not leads in a spreadsheet.</span><span class="plate plate-c" aria-hidden="true">Not leads in a spreadsheet.</span><span class="plate plate-m" aria-hidden="true">Not leads in a spreadsheet.</span><span class="plate plate-y" aria-hidden="true">Not leads in a spreadsheet.</span></span>
+      </h1>
+      <p style="font-size:18px; line-height:var(--leading); max-width:var(--measure); margin: calc(1.5*var(--leading) - 1cap) 0 0; text-box:trim-both cap alphabetic;">LeadGhost builds, tests, and automates cold outbound that reaches the person who can actually say yes. Owners, founders, partners. Whether you’re selling a service or sourcing your next acquisition, the motion is the same: get to the decision maker directly, before anyone else does.</p>
+      <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; margin-top:var(--leading);">
+        <a class="btn btn-primary" href="${BOOKING_URL}">${CTA}</a>
+        <a class="btn btn-ghost" href="#proof">See the results</a>
       </div>
     </section>
-  );
-}
 
-function WhoWeHelp() {
-  const audiences = [
-    { label: 'Founders', icon: '01' },
-    { label: 'Bootstrapped Owners', icon: '02' },
-    { label: 'Venture-Backed Startups', icon: '03' },
-    { label: 'Budding Agencies', icon: '04' },
-  ];
-
-  return (
-    <section className="relative py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-3xl mb-16">
-          <span className="text-xs font-mono font-medium text-neon-green uppercase tracking-widest">Who We Help</span>
-          <h2 className="font-display font-bold text-3xl lg:text-5xl text-white mt-4 leading-tight">
-            founders, bootstrapped owners, venture-backed startups, budding agencies&mdash;we got your back.
-          </h2>
+    <!-- WHO WE WORK WITH -->
+    <section id="approach" style="padding: calc(3*var(--leading)) 0 calc(2.5*var(--leading));">
+      <span style="display: block; font-size: 13px; line-height: var(--half); letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 calc(var(--leading) - var(--half));"><span style="color:var(--color-accent-2);">No. 1</span> &mdash; The engine, in three moves</span><div style="display:grid; grid-template-columns:repeat(3,1fr); gap: calc(1.5*var(--leading)) clamp(28px,4vw,64px); margin-top:calc(var(--leading) - var(--half));">
+        <div>
+          <h2 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:26px; line-height:var(--leading); letter-spacing:-0.01em; margin:0; text-box:trim-both cap alphabetic;">Build</h2>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; hyphenate-limit-chars:6 3 3; text-box:trim-both cap alphabetic;">Domains, inboxes, warmup, deliverability. We stand up infrastructure that keeps your mail out of spam and the promotions tab, so every message lands in front of a real decision maker, not a filter.</p>
         </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {audiences.map((a) => (
-            <div key={a.icon} className="hover-card p-6 lg:p-8 bg-ghost-card border border-ghost-border rounded-2xl text-center">
-              <span className="font-mono text-4xl font-bold text-neon-green/20">{a.icon}</span>
-              <h3 className="text-white font-semibold text-lg mt-3">{a.label}</h3>
-            </div>
-          ))}
+        <div>
+          <h2 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:26px; line-height:var(--leading); letter-spacing:-0.01em; margin:0; text-box:trim-both cap alphabetic;">Test</h2>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; hyphenate-limit-chars:6 3 3; text-box:trim-both cap alphabetic;">Segments, angles, offers, send windows. We read the replies, not the opens, and keep tuning until the campaign earns real conversations. Then we scale what works.</p>
         </div>
-
-        <div className="mt-12 text-center">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-sm font-medium text-neon-green hover:text-neon-glow transition-colors link-hover"
-          >
-            Our Resources
-            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
+        <div>
+          <h2 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:26px; line-height:var(--leading); letter-spacing:-0.01em; margin:0; text-box:trim-both cap alphabetic;">Automate</h2>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; hyphenate-limit-chars:6 3 3; text-box:trim-both cap alphabetic;">Sequencing, routing, follow-up. The machine runs without you and hands off warm replies as they land. New business conversations for operators. Owner conversations for acquirers. We open the door; you walk through it.</p>
         </div>
       </div>
+    </section><section style="padding: calc(2*var(--leading)) 0 calc(2.5*var(--leading));">
+      <span style="display:block; font-size:13px; line-height:var(--half); letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:0 0 calc(var(--leading) - var(--half));"><span style="color:var(--color-accent-2);">No. 2</span> &mdash; Who we work with</span>
+      <h2 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(26px,3vw,34px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0 0 var(--leading); max-width:22ch; text-box:trim-both cap alphabetic;">Companies and funds whose next quarter depends on who they’re talking to.</h2>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:var(--leading) clamp(24px,3vw,48px);">
+        <div><div style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; color:var(--color-accent-700); margin-bottom:6px;">01</div><div style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; line-height:1.2;">B2B founders</div><p style="font-size:14px; line-height:20px; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:8px 0 0;">Selling into other founders and executives.</p></div>
+        <div><div style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; color:var(--color-accent-700); margin-bottom:6px;">02</div><div style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; line-height:1.2;">Agencies &amp; studios</div><p style="font-size:14px; line-height:20px; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:8px 0 0;">Principals in front of buyers, not an inbox full of tire-kickers.</p></div>
+        <div><div style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; color:var(--color-accent-700); margin-bottom:6px;">03</div><div style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; line-height:1.2;">PE firms &amp; search funds</div><p style="font-size:14px; line-height:20px; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:8px 0 0;">Sourcing proprietary deal flow direct from owners.</p></div>
+        <div><div style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; color:var(--color-accent-700); margin-bottom:6px;">04</div><div style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; line-height:1.2;">Bootstrapped operators</div><p style="font-size:14px; line-height:20px; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:8px 0 0;">Living by their pipeline.</p></div>
+      </div>
     </section>
-  );
-}
 
-function HowWeHelp() {
-  return (
-    <section className="relative py-24 lg:py-32 bg-ghost-dark border-y border-ghost-border overflow-hidden">
-      <div className="absolute top-1/3 right-0 w-80 h-80 bg-neon-green/[0.03] rounded-full blur-[120px]" />
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <!-- PROOF / CASE STUDIES -->
+    <section id="proof" style="padding: calc(3*var(--leading)) 0 calc(1.5*var(--leading));">
+      <span style="display:block; font-size:13px; line-height:var(--half); letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:0 0 calc(var(--leading) - var(--half));"><span style="color:var(--color-accent-2);">No. 3</span> &mdash; The proof is in the conversations</span>
+
+      <!-- Case 1 -->
+      <div style="display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
+        <div>
+          <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-2); margin-bottom:calc(var(--leading) - var(--half));">Production company</div>
+          <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(24px,2.6vw,30px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; text-box:trim-both cap alphabetic;">From the spam folder to 55–60% open rates.</h3>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; max-width:52ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; text-box:trim-both cap alphabetic;">A video production company was seeing 7–15% open rates and couldn’t get in front of the people who buy. With our infrastructure they jumped to 35–40% almost immediately. Today they average 55–60%, and the conversations follow.</p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end;">
           <div>
-            <span className="text-xs font-mono font-medium text-neon-green uppercase tracking-widest">How We Help</span>
-            <h2 className="font-display font-bold text-3xl lg:text-5xl text-white mt-4 leading-tight">
-              we build outbound systems that sell for you.
-            </h2>
-            <p className="text-ghost-light text-lg mt-6 leading-relaxed">
-              we generate the opportunities,{' '}
-              <span className="text-white font-semibold">you close the deal.</span>
-            </p>
-            <div className="mt-10">
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-ghost-black bg-neon-green rounded-lg hover:bg-neon-glow transition-all duration-200 hover:shadow-[0_0_32px_rgba(0,232,90,0.3)]"
-              >
-                Check Our Services
-                <svg className="ml-2 w-4 h-4" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-            </div>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 60%, transparent); margin-bottom:calc(1.5*var(--leading));">Before</div>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(40px,5vw,60px);"><span class="paper">7–15%</span><span class="plate plate-c" aria-hidden="true">7–15%</span><span class="plate plate-m" aria-hidden="true">7–15%</span><span class="plate plate-y" aria-hidden="true">7–15%</span></span>
           </div>
-          <div className="relative h-80 lg:h-[420px] rounded-2xl bg-ghost-card border border-ghost-border overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-green/[0.03] to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center px-8">
-                <div className="w-16 h-16 rounded-full bg-neon-green/10 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-neon-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" strokeLinecap="round" strokeLinejoin="round" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <p className="text-ghost-text text-sm">Add your team or stock image here</p>
-              </div>
-            </div>
+          <div>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 60%, transparent); margin-bottom:calc(1.5*var(--leading));">After</div>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(40px,4.6vw,62px);"><span class="paper">55–60%</span><span class="plate plate-c" aria-hidden="true">55–60%</span><span class="plate plate-m" aria-hidden="true">55–60%</span><span class="plate plate-y" aria-hidden="true">55–60%</span></span>
           </div>
         </div>
       </div>
-    </section>
-  );
-}
 
-function TestimonialsSection() {
-  const testimonials = [
-    {
-      quote: 'Micheal has been great to work with and I plan on collaborating with him again in the near future. He quickly ramped up on our industry and tone of voice, very adaptable and always delivers when he says he will.',
-      role: 'CRO',
-      company: 'SaaS',
-    },
-    {
-      quote: "Very impressed with your workflow and the changes implemented to improve.\n\nI am loving your work to be quite honest....14 leads in 1 week!",
-      role: 'CEO',
-      company: 'Packaging Broker',
-    },
-    {
-      quote: "I'm extremely happy with the response so far and I've had several quality meetings with interested parties...and we haven't even put a dent in the list!\n\nYou're really on top of it and it's obvious you're an expert. Working with you has been a breath of fresh air!",
-      role: 'President',
-      company: 'Investment Firm',
-    },
-  ];
-
-  return (
-    <section className="relative py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-2xl mb-16">
-          <span className="text-xs font-mono font-medium text-neon-green uppercase tracking-widest">Who We&apos;ve Helped</span>
-          <h2 className="font-display font-bold text-3xl lg:text-5xl text-white mt-4 leading-tight">
-            Real results. Real words.
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div key={i} className="hover-card p-6 lg:p-8 bg-ghost-card border border-ghost-border rounded-2xl flex flex-col">
-              <svg className="w-8 h-8 text-neon-green/30 mb-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11 7.05C7.28 7.56 4.5 10.73 4.5 14.5c0 1.93.78 3.68 2.05 4.95l.7-.7C6.1 17.6 5.5 16.11 5.5 14.5c0-2.94 2.06-5.4 4.82-6.03L11 7.05zM19.5 7.05c-3.72.51-6.5 3.68-6.5 7.45 0 1.93.78 3.68 2.05 4.95l.7-.7C14.6 17.6 14 16.11 14 14.5c0-2.94 2.06-5.4 4.82-6.03L19.5 7.05z" />
-              </svg>
-              <p className="text-ghost-light text-sm leading-relaxed flex-1 whitespace-pre-line">{t.quote}</p>
-              <div className="mt-6 pt-4 border-t border-ghost-border">
-                <span className="text-white font-semibold text-sm">{t.role}</span>
-                <span className="text-ghost-text text-xs block mt-0.5">{t.company}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CaseStudiesSection() {
-  const studies = [
-    {
-      tag: 'Production Company',
-      title: 'From spam folders to 55-60% open rates',
-      body: 'A video production company had a huge email delivery issue before coming to leadghost.\n\nOn average, they were seeing 7-15% open rates on their campaigns and knew they needed to escape the spam filters and promotions tab to talk directly with their prospects.\n\nUsing our cold email infrastructure, we immediately brought their open rates to 35-40%. Now, they average roughly 55-60%.',
-      stats: [
-        { value: '7-15%', label: 'Before', sub: 'Open Rate' },
-        { value: '55-60%', label: 'After', sub: 'Open Rate' },
-      ],
-    },
-    {
-      tag: 'Private Equity',
-      title: '43 meetings in 3 months. ~$74M in pipeline.',
-      body: "A PE search fund teamed up with leadghost for three campaigns (and counting). We booked them 43 meetings in just three months (nearly $74M in pipeline value). Initially, we hit a snag with spam filters\u2014a common issue in financial emails. But together, we got creative, tweaking our messages so they'd land right where they needed to, without setting off any alarms.\n\nNow, our efforts are not just about sending emails. We're helping their sales team keep their pipeline full and even growing their email list with solid, interested businesses ready to sell. It's all about smart strategies and real teamwork.",
-      stats: [
-        { value: '43', label: 'Meetings', sub: 'In 3 Months' },
-        { value: '~$74M', label: 'Pipeline', sub: 'Value Generated' },
-      ],
-    },
-    {
-      tag: 'Social Analytics Platform',
-      title: '3-4 interested responses per day across 6 campaigns',
-      body: 'A Social Media Analytics platform came to us looking for creative ways to approach their outbound motion to engage new prospects.\n\nTo address their needs, we set up a robust email delivery infrastructure and utilized our extensive internal databases to initiate six distinct campaigns simultaneously, each crafted with unique targeting parameters to reach a diverse set of potential prospects.\n\nThe outcome of this strategic approach was remarkable. Across all six campaigns, they experienced an average of 3-4 interested responses per day, demonstrating the effectiveness of tailored targeting and the potential for growth through carefully crafted outreach efforts.',
-      stats: [
-        { value: '6', label: 'Campaigns', sub: 'Simultaneous' },
-        { value: '3-4/day', label: 'Responses', sub: 'Interested Leads' },
-      ],
-    },
-  ];
-
-  return (
-    <section className="relative py-24 lg:py-32 bg-ghost-dark border-y border-ghost-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-2xl mb-16">
-          <span className="text-xs font-mono font-medium text-neon-green uppercase tracking-widest">Our Clients</span>
-          <h2 className="font-display font-bold text-3xl lg:text-5xl text-white mt-4 leading-tight">
-            The proof is in the pipeline.
-          </h2>
-        </div>
-
-        <div className="space-y-8">
-          {studies.map((study, i) => (
-            <div key={i} className="hover-card p-8 lg:p-10 bg-ghost-card border border-ghost-border rounded-2xl">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-                <div className="lg:col-span-2">
-                  <span className="text-[10px] font-mono font-medium text-neon-dim uppercase tracking-widest">{study.tag}</span>
-                  <h3 className="font-display font-bold text-xl lg:text-2xl text-white mt-2">{study.title}</h3>
-                  <div className="mt-4 space-y-3">
-                    {study.body.split('\n\n').map((paragraph, j) => (
-                      <p key={j} className="text-ghost-text text-sm leading-relaxed">{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex flex-row lg:flex-col gap-4 lg:gap-6 lg:justify-center">
-                  {study.stats.map((stat, k) => (
-                    <div key={k} className="flex-1 p-4 lg:p-5 bg-ghost-dark border border-ghost-border rounded-xl text-center">
-                      <div className="font-display font-bold text-2xl lg:text-3xl text-neon-green glow-text">{stat.value}</div>
-                      <div className="text-white font-medium text-xs mt-1">{stat.label}</div>
-                      <div className="text-ghost-text text-[10px] font-mono uppercase tracking-wider mt-0.5">{stat.sub}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function NewsletterSection() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email) setSubscribed(true);
-  };
-
-  return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-[600px] h-[600px] bg-neon-green/[0.04] rounded-full blur-[150px]" />
-      </div>
-
-      <div className="max-w-2xl mx-auto px-6 lg:px-8 text-center relative z-10">
-        <span className="text-xs font-mono font-medium text-neon-green uppercase tracking-widest">Stay in the Loop</span>
-        <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mt-4">
-          outbound strategies delivered to your inbox
-        </h2>
-        <p className="text-ghost-light text-base mt-4">
-          Subscribe to our weekly newsletter.
-        </p>
-
-        {subscribed ? (
-          <div className="mt-8 p-6 bg-ghost-card border border-neon-green/20 rounded-xl glow-border">
-            <p className="text-neon-green font-semibold">You&apos;re in. Check your inbox.</p>
+      <!-- Case 2 -->
+      <div style="display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
+        <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end; order:1;">
+          <div>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 60%, transparent); margin-bottom:20px;">Meetings in 3 months</div><span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(56px,7vw,92px);"><span class="paper">43</span><span class="plate plate-c" aria-hidden="true">43</span><span class="plate plate-m" aria-hidden="true">43</span><span class="plate plate-y" aria-hidden="true">43</span></span>
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="you@company.com"
-              className="flex-1 px-4 py-3 bg-ghost-card border border-ghost-border rounded-lg text-white text-sm focus:outline-none focus:border-neon-green/40 focus:ring-1 focus:ring-neon-green/20 transition-colors placeholder:text-ghost-muted"
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 text-sm font-semibold text-ghost-black bg-neon-green rounded-lg hover:bg-neon-glow transition-all duration-200 hover:shadow-[0_0_24px_rgba(0,232,90,0.25)]"
-            >
-              Subscribe
-            </button>
-          </form>
-        )}
+          <div>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 60%, transparent); margin-bottom:calc(1.5*var(--leading));">Pipeline value</div>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(44px,5.5vw,72px);"><span class="paper">~$74M</span><span class="plate plate-c" aria-hidden="true">~$74M</span><span class="plate plate-m" aria-hidden="true">~$74M</span><span class="plate plate-y" aria-hidden="true">~$74M</span></span>
+          </div>
+        </div>
+        <div style="order:2;">
+          <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-2); margin-bottom:calc(var(--leading) - var(--half));">Private equity</div>
+          <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(24px,2.6vw,30px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; text-box:trim-both cap alphabetic;">43 owner meetings in three months. Nearly $74M in pipeline.</h3>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; max-width:52ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; text-box:trim-both cap alphabetic;">A search fund ran three campaigns with us (and counting). Financial email trips spam filters more than most, so we reworked the messaging until it landed cleanly. Now their team spends its time in conversations with owners who are actually ready to sell.</p>
+        </div>
+      </div><div style="display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
+        <div>
+          <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-2); margin-bottom:calc(var(--leading) - var(--half));">Social analytics platform</div>
+          <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(24px,2.6vw,30px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; text-box:trim-both cap alphabetic;">Six campaigns, 3–4 interested replies a day.</h3>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; max-width:52ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; text-box:trim-both cap alphabetic;">A social analytics platform wanted new ways to open conversations with buyers. We built the delivery infrastructure and ran six campaigns in parallel, each with its own targeting. The result: 3–4 interested replies a day, every day, across all six.</p>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end;">
+          <div>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 60%, transparent); margin-bottom:calc(1.5*var(--leading));">Campaigns</div>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(48px,6vw,76px);"><span class="paper">6</span><span class="plate plate-c" aria-hidden="true">6</span><span class="plate plate-m" aria-hidden="true">6</span><span class="plate plate-y" aria-hidden="true">6</span></span>
+          </div>
+          <div>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 60%, transparent); margin-bottom:calc(1.5*var(--leading));">Replies / day</div>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(48px,6vw,76px);"><span class="paper">3–4</span><span class="plate plate-c" aria-hidden="true">3–4</span><span class="plate plate-m" aria-hidden="true">3–4</span><span class="plate plate-y" aria-hidden="true">3–4</span></span>
+          </div>
+        </div>
+      </div><div style="display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
+        <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end; order:1;">
+          <div>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 60%, transparent); margin-bottom:calc(1.5*var(--leading));">Owner conversations</div>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(56px,7vw,92px);"><span class="paper">27</span><span class="plate plate-c" aria-hidden="true">27</span><span class="plate plate-m" aria-hidden="true">27</span><span class="plate plate-y" aria-hidden="true">27</span></span>
+          </div>
+          <div>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 60%, transparent); margin-bottom:calc(1.5*var(--leading));">Off-market</div>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(44px,5.5vw,72px);"><span class="paper">100%</span><span class="plate plate-c" aria-hidden="true">100%</span><span class="plate plate-m" aria-hidden="true">100%</span><span class="plate plate-y" aria-hidden="true">100%</span></span>
+          </div>
+        </div>
+        <div style="order:2;">
+          <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent-2); margin-bottom:calc(var(--leading) - var(--half));">Home services &middot; Austin</div>
+          <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(24px,2.6vw,30px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; text-box:trim-both cap alphabetic;">27 conversations with founders and owners. None of them on a banker&rsquo;s list.</h3>
+          <p style="font-size:15.5px; line-height:var(--leading); margin:calc(var(--leading) - 1cap) 0 0; max-width:52ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); text-align:justify; hyphens:auto; text-box:trim-both cap alphabetic;">An Austin firm wanted direct access to home services operators, the kind who never answer a broker and aren’t running a process. We built the target list ourselves, wrote to owners like operators rather than buyers, and opened 27 real conversations. Proprietary deal flow, one inbox at a time.</p>
+        </div>
       </div>
     </section>
-  );
-}
+
+    <!-- PULL QUOTE -->
+    <section style="padding: calc(2.5*var(--leading)) 0 calc(3*var(--leading));">
+      <figure style="margin:0;">
+        <blockquote style="font-family:var(--font-heading); font-style:italic; font-weight:400; font-size:clamp(24px,2.8vw,36px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.01em; max-width:36ch; margin:0; text-indent:-0.475em; text-box:trim-both cap alphabetic;">“You’re really on top of it and it’s obvious you’re an expert. Working with you has been a breath of fresh air.”</blockquote>
+        <figcaption style="font-size:15.5px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:calc(2*var(--leading) - 1cap) 0 0; text-indent:-1.045em; text-box:trim-both cap alphabetic;">— President, investment firm</figcaption>
+      </figure>
+    </section>
+
+    <!-- ENGAGEMENTS -->
+    <section id="engagements" style="padding: calc(2*var(--leading)) 0 calc(2.5*var(--leading));">
+      <span style="display:block; font-size:13px; line-height:var(--half); letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:0 0 calc(var(--leading) - var(--half));"><span style="color:var(--color-accent-2);">No. 4</span> &mdash; Engagements</span>
+      <h2 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(26px,3vw,34px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0 0 var(--leading); max-width:24ch; text-box:trim-both cap alphabetic;">Start where it hurts. Scale when it works.</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2vw,24px);">
+        <div class="card">
+          <div class="card-kicker">Infrastructure</div>
+          <div class="card-title">Deliverability build</div>
+          <p class="card-body">Domains, inboxes, warmup, and deliverability monitoring. For teams who write their own copy but keep landing in spam instead of in front of decision makers.</p>
+          <div style="display:flex; flex-direction:column; gap:6px; font-size:13.5px; margin-top:4px;">
+            <span>Domain &amp; inbox setup</span>
+            <span>Warmup &amp; DNS (SPF, DKIM, DMARC)</span>
+            <span>Ongoing deliverability monitoring</span>
+          </div>
+          <a class="btn btn-secondary btn-block" href="${BOOKING_URL}" style="margin-top:auto;">${CTA}</a>
+        </div>
+        <div class="card elev-md" style="outline:2px solid var(--color-accent); outline-offset:-2px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+            <div class="card-kicker">Campaigns</div>
+            <span class="tag tag-accent">Most chosen</span>
+          </div>
+          <div class="card-title">Managed outbound</div>
+          <p class="card-body">Everything in Infrastructure, plus fully managed campaigns: targeting, copy, testing, and reply handling straight to your calendar. You show up to conversations; we handle everything before them.</p>
+          <div style="display:flex; flex-direction:column; gap:6px; font-size:13.5px; margin-top:4px;">
+            <span>List building &amp; decision-maker targeting</span>
+            <span>Copywriting &amp; A/B testing</span>
+            <span>Reply management &amp; booking</span>
+          </div>
+          <a class="btn btn-primary btn-block" href="${BOOKING_URL}" style="margin-top:auto;">${CTA}</a>
+        </div>
+        <div class="card">
+          <div class="card-kicker">GTM partner</div>
+          <div class="card-title">Full outbound engine</div>
+          <p class="card-body">Multi-campaign, multi-market outbound with strategy and reporting. We embed with your team and own the pipeline motion, whether that pipeline is customers or acquisitions.</p>
+          <div style="display:flex; flex-direction:column; gap:6px; font-size:13.5px; margin-top:4px;">
+            <span>Parallel campaigns &amp; segments</span>
+            <span>Dedicated strategist</span>
+            <span>Pipeline reporting &amp; forecasting</span>
+          </div>
+          <a class="btn btn-secondary btn-block" href="${BOOKING_URL}" style="margin-top:auto;">Talk to us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSE -->
+    <section style="padding: calc(2.5*var(--leading)) 0 calc(2*var(--leading));">
+      <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(28px,3.4vw,40px); line-height:calc(1.5*var(--leading)); letter-spacing:-0.015em; margin:0; max-width:28ch; text-box:trim-both cap alphabetic;">Your next ten decision-maker conversations are a two-week build away.</h3>
+      <p style="font-size:16px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:calc(var(--leading) - 1cap) 0 0; max-width:var(--measure); text-box:trim-both cap alphabetic;">Bring us your offer, or your acquisition thesis, and your best-fit accounts. We’ll build the system that turns them into calendar invites.</p>
+      <div style="margin-top:var(--leading);">
+        <a class="btn btn-primary" href="${BOOKING_URL}">${CTA}</a>
+      </div>
+    </section>
+
+    <hr style="height:5px; border:0; margin:0; border-top:1px solid var(--color-text); border-bottom:2px solid var(--color-text);">
+    <footer style="padding: calc(2*var(--leading)) 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--leading); font-size:13px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 70%, transparent);">
+      <div style="max-width:40ch;">
+        <span style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:18px; color:var(--color-text); display:block; margin-bottom:6px;">LeadGhost</span>
+        Cold outbound infrastructure, campaign strategy, and GTM systems that put you in conversation with the people who decide.
+      </div>
+      <div style="display:flex; gap:calc(2*var(--leading)); flex-wrap:wrap;">
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <span style="text-transform:uppercase; letter-spacing:0.08em; color:var(--color-text);">Navigate</span>
+          <a href="#approach">Approach</a>
+          <a href="#proof">Proof</a>
+          <a href="#engagements">Engagements</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <span style="text-transform:uppercase; letter-spacing:0.08em; color:var(--color-text);">Connect</span>
+          <a href="mailto:micheal@leadghost.co">micheal@leadghost.co</a>
+          <a href="${BOOKING_URL}">${CTA}</a>
+        </div>
+      </div>
+      <div style="flex-basis:100%; padding-top:var(--half);">© 2026 LeadGhost. All rights reserved.</div>
+    </footer>
+
+  </div>`;
 
 export default function Home() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current?.querySelector('[data-dateline]');
+    if (el) {
+      el.textContent = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    }
+  }, []);
+
   return (
-    <>
-      <HeroSection />
-      <WhoWeAre />
-      <WhoWeHelp />
-      <HowWeHelp />
-      <TestimonialsSection />
-      <CaseStudiesSection />
-      <NewsletterSection />
-    </>
+    <div
+      ref={ref}
+      className="lg-page"
+      style={{
+        '--leading': '28px',
+        '--half': '14px',
+        '--edge': 'clamp(20px,5vw,72px)',
+        '--measure': '58ch',
+      }}
+      dangerouslySetInnerHTML={{ __html: INNER }}
+    />
   );
 }
