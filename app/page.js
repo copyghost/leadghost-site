@@ -275,7 +275,7 @@ export default function Home() {
             width={600}
             height={154}
             priority
-            style={{ height: '32px', width: 'auto' }}
+            style={{ height: '44px', width: 'auto' }}
           />
         </a>
         <a href="#approach" style={{ whiteSpace: 'nowrap' }}>Approach</a>
