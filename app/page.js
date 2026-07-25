@@ -1,10 +1,6 @@
 import Image from 'next/image';
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Edit these two to point the CTA wherever you want (e.g. a Calendly link).
-// ─────────────────────────────────────────────────────────────────────────────
-const BOOKING_URL = 'https://app.onecal.io/b/leadghost/30-minute-meeting';
-const CTA = 'Book a call';
+// The CTA target lives in lib/config.js (shared with the conversion tracker).
+import { BOOKING_URL, CTA } from '@/lib/config';
 
 // Masthead dateline — computed once at build time (this is a static export),
 // so it ships in the initial HTML with no client JS and no layout shift.

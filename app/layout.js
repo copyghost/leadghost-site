@@ -1,5 +1,8 @@
 import { Source_Serif_4 } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import StructuredData from '@/components/StructuredData';
+import ConversionTracking from '@/components/ConversionTracking';
 import './broadsheet.css';
 import './globals.css';
 
@@ -70,6 +73,9 @@ export default function RootLayout({ children }) {
       <body>
         <StructuredData />
         {children}
+        <ConversionTracking />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
