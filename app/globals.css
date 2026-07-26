@@ -35,18 +35,15 @@ html {
 
 /* ── Headline / figure treatment ─────────────────────────────────────────────
    The design ships a misregistered CMYK-plate effect (cyan/magenta/yellow copies
-   behind the ink). That chromatic-aberration look strains the eyes, so replace
-   it with solid ink plus a single, subtle blue offset shadow. Applies to both
-   the plate headlines (.cmyk-head) and the stat numerals (.cmyk-num). Loaded
-   after broadsheet.css, so these win. */
+   behind the ink). That chromatic-aberration look strains the eyes AND the three
+   duplicate .plate spans repeated each headline/number in the crawler-visible
+   DOM. The .plate spans are now removed from the markup entirely; the effect is
+   solid ink plus a single subtle blue offset shadow, on the one remaining
+   .paper span. Loaded after broadsheet.css, so these win. */
 .cmyk-head .paper,
 .cmyk-num .paper {
   color: var(--color-text);
   text-shadow: 0.03em 0.035em 0 var(--color-accent);
-}
-.cmyk-head .plate,
-.cmyk-num .plate {
-  display: none;
 }
 
 /* The design justifies body paragraphs with auto-hyphenation, which opens up
