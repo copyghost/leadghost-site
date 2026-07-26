@@ -31,7 +31,7 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
     <!-- HERO -->
     <section style="padding: calc(4*var(--leading)) 0 calc(2.5*var(--leading));">
       <h1 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(38px,5.75vw,72px); line-height:1.05; letter-spacing:-0.025em; margin:0 0 0 -0.04em; text-box:trim-both cap alphabetic;">
-        <span class="cmyk-head" style="display:block; position:relative;"><span class="paper">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span><span class="plate plate-c" aria-hidden="true">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span><span class="plate plate-m" aria-hidden="true">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span><span class="plate plate-y" aria-hidden="true">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span></span>
+        <span class="cmyk-head" style="display:block; position:relative;"><span class="paper">Your next 10 decision&#8209;maker conversations are a two&#8209;week build away.</span></span>
       </h1>
       <p style="font-size:18px; line-height:var(--leading); max-width:var(--measure); margin: calc(1.5*var(--leading) - 1cap) 0 0; text-box:trim-both cap alphabetic;">LeadGhost builds, tests, and automates cold outbound that reaches the person who can actually say yes. Owners, founders, partners. Whether you’re selling a service or sourcing your next acquisition, the motion is the same: get to the decision maker directly, before anyone else does.</p>
       <div style="display:flex; gap:var(--space-3); flex-wrap:wrap; margin-top:var(--leading);">
@@ -43,9 +43,9 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
     <!-- WHO WE WORK WITH -->
     <section id="approach" style="padding: calc(3*var(--leading)) 0 calc(2.5*var(--leading));">
       <h2 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(30px,4.2vw,56px); line-height:clamp(33px,4.5vw,60px); letter-spacing:-0.02em; margin:0 0 calc(1.75*var(--leading)) -0.03em; text-box:trim-both cap alphabetic;">
-        <span class="line cmyk-head" style="display:block"><span class="paper">Conversations with</span><span class="plate plate-c" aria-hidden="true">Conversations with</span><span class="plate plate-m" aria-hidden="true">Conversations with</span><span class="plate plate-y" aria-hidden="true">Conversations with</span></span>
-        <span class="line cmyk-head" style="display:block"><span class="paper">decision makers.</span><span class="plate plate-c" aria-hidden="true">decision makers.</span><span class="plate plate-m" aria-hidden="true">decision makers.</span><span class="plate plate-y" aria-hidden="true">decision makers.</span></span>
-        <span class="line cmyk-head" style="display:block"><span class="paper">Not leads in a spreadsheet.</span><span class="plate plate-c" aria-hidden="true">Not leads in a spreadsheet.</span><span class="plate plate-m" aria-hidden="true">Not leads in a spreadsheet.</span><span class="plate plate-y" aria-hidden="true">Not leads in a spreadsheet.</span></span>
+        <span class="line cmyk-head" style="display:block"><span class="paper">Conversations with</span></span>
+        <span class="line cmyk-head" style="display:block"><span class="paper">decision makers.</span></span>
+        <span class="line cmyk-head" style="display:block"><span class="paper">Not leads in a spreadsheet.</span></span>
       </h2>
       <span style="display: block; font-size: 13px; line-height: var(--half); letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 70%, transparent); margin: 0 0 calc(var(--leading) - var(--half));"><span style="color:var(--color-accent-2);">No. 1</span> &mdash; The engine, in three moves</span><div style="display:grid; grid-template-columns:repeat(3,1fr); gap: calc(1.5*var(--leading)) clamp(28px,4vw,64px); margin-top:calc(var(--leading) - var(--half));">
         <div>
@@ -87,11 +87,11 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
         <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end;">
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Before</div>
-            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(40px,5vw,60px);"><span class="paper">7–15%</span><span class="plate plate-c" aria-hidden="true">7–15%</span><span class="plate plate-m" aria-hidden="true">7–15%</span><span class="plate plate-y" aria-hidden="true">7–15%</span></span>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(40px,5vw,60px);"><span class="paper">7–15%</span></span>
           </div>
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">After</div>
-            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(40px,4.6vw,62px);"><span class="paper">55–60%</span><span class="plate plate-c" aria-hidden="true">55–60%</span><span class="plate plate-m" aria-hidden="true">55–60%</span><span class="plate plate-y" aria-hidden="true">55–60%</span></span>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(40px,4.6vw,62px);"><span class="paper">55–60%</span></span>
           </div>
         </div>
       </div>
@@ -105,11 +105,11 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end;">
           <div>
-            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:20px;">Meetings in 3 months</div><span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(56px,7vw,92px);"><span class="paper">43</span><span class="plate plate-c" aria-hidden="true">43</span><span class="plate plate-m" aria-hidden="true">43</span><span class="plate plate-y" aria-hidden="true">43</span></span>
+            <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:20px;">Meetings in 3 months</div><span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(56px,7vw,92px);"><span class="paper">43</span></span>
           </div>
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Pipeline value</div>
-            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(44px,5.5vw,72px);"><span class="paper">~$74M</span><span class="plate plate-c" aria-hidden="true">~$74M</span><span class="plate plate-m" aria-hidden="true">~$74M</span><span class="plate plate-y" aria-hidden="true">~$74M</span></span>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(44px,5.5vw,72px);"><span class="paper">~$74M</span></span>
           </div>
         </div>
       </div><div style="display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
@@ -121,11 +121,11 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
         <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end;">
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Campaigns</div>
-            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(48px,6vw,76px);"><span class="paper">6</span><span class="plate plate-c" aria-hidden="true">6</span><span class="plate plate-m" aria-hidden="true">6</span><span class="plate plate-y" aria-hidden="true">6</span></span>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(48px,6vw,76px);"><span class="paper">6</span></span>
           </div>
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Replies / day</div>
-            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(48px,6vw,76px);"><span class="paper">3–4</span><span class="plate plate-c" aria-hidden="true">3–4</span><span class="plate plate-m" aria-hidden="true">3–4</span><span class="plate plate-y" aria-hidden="true">3–4</span></span>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(48px,6vw,76px);"><span class="paper">3–4</span></span>
           </div>
         </div>
       </div><div style="display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:var(--leading) clamp(24px,5vw,80px); align-items:center; padding: calc(1.5*var(--leading)) 0;">
@@ -137,11 +137,11 @@ const BODY = `<div style="max-width:1200px; margin:0 auto; padding:0 var(--edge)
         <div style="display:flex; flex-wrap:wrap; gap:var(--leading) clamp(24px,4vw,56px); align-items:flex-end;">
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Owner conversations</div>
-            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(56px,7vw,92px);"><span class="paper">27</span><span class="plate plate-c" aria-hidden="true">27</span><span class="plate plate-m" aria-hidden="true">27</span><span class="plate plate-y" aria-hidden="true">27</span></span>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(56px,7vw,92px);"><span class="paper">27</span></span>
           </div>
           <div>
             <div style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent); margin-bottom:calc(1.5*var(--leading));">Off-market</div>
-            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(44px,5.5vw,72px);"><span class="paper">100%</span><span class="plate plate-c" aria-hidden="true">100%</span><span class="plate plate-m" aria-hidden="true">100%</span><span class="plate plate-y" aria-hidden="true">100%</span></span>
+            <span class="cmyk-num" style="display:inline-block; line-height:1; white-space:nowrap; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(44px,5.5vw,72px);"><span class="paper">100%</span></span>
           </div>
         </div>
       </div>
